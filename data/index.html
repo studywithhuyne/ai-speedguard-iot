@@ -20,6 +20,11 @@
       </div>
     </section>
 
+    <nav class="nav-links" aria-label="Điều hướng">
+      <a class="nav-link active" href="/">Dashboard</a>
+      <a class="nav-link" href="/log">Nhật ký vi phạm</a>
+    </nav>
+
     <section class="dashboard" aria-label="Bảng theo dõi tốc độ">
       <article class="speed-panel">
         <span class="label">Tốc độ hiện tại</span>
@@ -41,18 +46,71 @@
       </article>
 
       <article class="metric">
+        <span class="label">Tốc độ cao nhất</span>
+        <strong><span id="maxSpeed">0.0</span> km/h</strong>
+      </article>
+
+      <article class="metric">
         <span class="label">Tốc độ vi phạm gần nhất</span>
         <strong><span id="lastViolation">0.0</span> km/h</strong>
       </article>
+
+      <article class="metric">
+        <span class="label">Số lần đo</span>
+        <strong id="measurements">0</strong>
+      </article>
     </section>
 
-    <section class="control-panel" aria-label="Cập nhật giới hạn tốc độ">
-      <label for="limitInput">Đổi giới hạn tốc độ</label>
+    <section class="control-panel" aria-label="Cài đặt giới hạn tốc độ">
+      <div class="section-heading">
+        <div>
+          <h2>Cài đặt giới hạn tốc độ</h2>
+        </div>
+        <a class="button-link secondary-button" href="/export.csv" download>Xuất CSV</a>
+      </div>
+
+      <label for="limitInput">Giới hạn tốc độ</label>
       <div class="limit-form">
         <input id="limitInput" type="number" min="1" max="300" step="0.1" value="60">
         <button id="updateLimit" type="button">Cập nhật giới hạn</button>
       </div>
       <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="chart-panel" aria-label="Biểu đồ tốc độ">
+      <div class="section-heading">
+        <div>
+          <h2>Biểu đồ tốc độ</h2>
+        </div>
+        <span id="chartCount" class="small-stat">0 điểm đo</span>
+      </div>
+      <canvas id="speedChart" height="260"></canvas>
+    </section>
+
+    <section class="table-panel history-panel" aria-label="Lịch sử đo tốc độ">
+      <div class="table-header">
+        <div>
+          <h2>Lịch sử đo tốc độ</h2>
+        </div>
+        <button id="refreshHistory" class="secondary-button" type="button">Làm mới</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Lần</th>
+              <th>Thời gian</th>
+              <th>Tốc độ</th>
+              <th>Giới hạn</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody id="historyRows"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyHistory" class="empty-state">Chưa có dữ liệu đo.</div>
     </section>
   </main>
 

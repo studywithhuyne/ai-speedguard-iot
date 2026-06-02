@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhật ký vi phạm - AI SpeedGuard IoT</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="header">
+      <div>
+        <p class="eyebrow">Theo dõi vi phạm</p>
+        <h1>Nhật ký vi phạm</h1>
+        <p class="description">Ghi lại thời gian, tốc độ đo được và giới hạn tốc độ tại từng lần vượt tốc độ.</p>
+      </div>
+      <div class="connection">
+        <span class="dot" aria-hidden="true"></span>
+        192.168.4.1
+      </div>
+    </section>
+
+    <nav class="nav-links" aria-label="Điều hướng">
+      <a class="nav-link" href="/">Dashboard</a>
+      <a class="nav-link active" href="/log">Nhật ký vi phạm</a>
+    </nav>
+
+    <section class="log-summary" aria-label="Tóm tắt nhật ký">
+      <article class="metric">
+        <span class="label">Số bản ghi đang lưu</span>
+        <strong id="logCount">0</strong>
+      </article>
+
+      <article class="metric">
+        <span class="label">Trạng thái đồng bộ giờ</span>
+        <strong id="timeStatus">Đang kiểm tra</strong>
+      </article>
+    </section>
+
+    <section class="table-panel" aria-label="Bảng nhật ký vi phạm">
+      <div class="table-header">
+        <div>
+          <h2>Danh sách vi phạm</h2>
+          <p>ESP32 lưu 50 vi phạm gần nhất trong RAM. Mất nguồn sẽ xóa nhật ký.</p>
+        </div>
+        <button id="refreshLogs" class="secondary-button" type="button">Làm mới</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Lần</th>
+              <th>Thời gian</th>
+              <th>Uptime</th>
+              <th>Tốc độ</th>
+              <th>Giới hạn</th>
+            </tr>
+          </thead>
+          <tbody id="logRows"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyLogs" class="empty-state">Chưa có vi phạm nào.</div>
+    </section>
+  </main>
+
+  <script src="/log.js"></script>
+</body>
+</html>
