@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI SpeedGuard IoT</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="header">
+      <div>
+        <p class="eyebrow">ESP32 Access Point</p>
+        <h1>AI SpeedGuard IoT</h1>
+        <p class="description">Hệ thống đo tốc độ và cảnh báo vượt tốc độ bằng giọng nói AI kết hợp IoT.</p>
+      </div>
+      <div class="connection">
+        <span class="dot" aria-hidden="true"></span>
+        192.168.4.1
+      </div>
+    </section>
+
+    <section class="dashboard" aria-label="Bảng theo dõi tốc độ">
+      <article class="speed-panel">
+        <span class="label">Tốc độ hiện tại</span>
+        <div class="speed-readout">
+          <span id="speed">0.0</span>
+          <span class="unit">km/h</span>
+        </div>
+        <div id="status" class="status neutral">ĐANG CHỜ</div>
+      </article>
+
+      <article class="metric">
+        <span class="label">Giới hạn tốc độ</span>
+        <strong><span id="limit">60.0</span> km/h</strong>
+      </article>
+
+      <article class="metric">
+        <span class="label">Số lần vi phạm</span>
+        <strong id="violations">0</strong>
+      </article>
+
+      <article class="metric">
+        <span class="label">Tốc độ vi phạm gần nhất</span>
+        <strong><span id="lastViolation">0.0</span> km/h</strong>
+      </article>
+    </section>
+
+    <section class="control-panel" aria-label="Cập nhật giới hạn tốc độ">
+      <label for="limitInput">Đổi giới hạn tốc độ</label>
+      <div class="limit-form">
+        <input id="limitInput" type="number" min="1" max="300" step="0.1" value="60">
+        <button id="updateLimit" type="button">Cập nhật giới hạn</button>
+      </div>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
