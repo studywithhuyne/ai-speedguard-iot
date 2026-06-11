@@ -29,7 +29,7 @@ LiquidCrystal_I2C lcd(LCD_ADDRESS, LCD_COLS, LCD_ROWS);
 // ===== Speed sensor settings =====
 const bool SENSOR_ACTIVE_LOW = true;
 const unsigned long DEBOUNCE_MS = 60;
-const float GAP_CM = 10.0;
+const float GAP_CM = 20.0;
 const float SPEED_CALIBRATION_FACTOR = 40.0;
 const unsigned long SPEED_TIMEOUT_US = 5000000UL;
 
